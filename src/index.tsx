@@ -1,23 +1,23 @@
-import React from 'react';
+import { CssBaseline } from '@mui/material';
+
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { Router } from 'react-router-dom';
+import { history } from 'utils/history';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { store } from './app/store';
+import 'react-toastify/dist/ReactToastify.min.css';
 import './index.css';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <Router history={history}>
+      <CssBaseline>
+        <App />
+      </CssBaseline>
+    </Router>
+  </Provider>,
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
